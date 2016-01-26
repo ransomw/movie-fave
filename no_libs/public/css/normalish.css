@@ -1,0 +1,63 @@
+/* browsers have different default settings, so it can be helpful to
+ * include a stylesheet (sort of) like this one that helps preserve
+ * the look and feel of web pages across browsers.
+ *
+ * in practice, it's more common to reuse an existing stylesheet
+ * for this purpose.
+ *
+ * the most important part of a normalization stylesheet like
+ * normalize.css is what is does _not_ do:  it doesn't add any
+ * page-specific styles.  in particular, selecting elements by
+ * class or id doesn't occur in normalization.
+ */
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
+
+/* browser-specific css attributes like -moz-box-sizing (below),
+ * which is for Firefox, the browser from MOZilla, are of the form
+ * -<vendor>-<attr-ibute>
+ * where the first character is a dash, -, followed by the a name
+ * specific to the vendor, followed by the attribute name
+ */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/* for IE <=10.  even though these versions are no longer supported
+ * by microsoft, this is the sort of detail one must pay attention to
+ * if supporting users of older browsers is a priority for one's project.
+ *
+ * due to the variety of such details, this teaching sample
+ * is not a _nearly_ complete example of cross-browser support
+ */
+[hidden="true"] {
+  display: none;
+}
+
+
+input {
+  line-height: normal; /* firefox */
+}
+
+button {
+  cursor: pointer;
+  text-transform: none;
+  font: inherit;
+  color: inherit;
+}

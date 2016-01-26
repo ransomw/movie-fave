@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <!-- although this example is not entirely mobile-friendly (see
+         comments in css files), this tag allows proper-ish display
+         on mobile and other devices with different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Fave</title>
+    <!-- styles "cascade" in the sense that rules in grid.css,
+         for example, take precedence over rules in normalish.css. -->
+    <link rel="stylesheet" type="text/css"
+          href="css/fonts.css">
+    <link rel="stylesheet" type="text/css"
+          href="css/normalish.css">
+    <link rel="stylesheet" type="text/css"
+          href="css/grid.css">
+    <link rel="stylesheet" type="text/css"
+          href="css/spinners.css">
+    <link rel="stylesheet" type="text/css"
+          href="css/nav.css">
+    <link rel="stylesheet" type="text/css"
+          href="css/main.css">
+  </head>
+  <!-- in practice, a "build system" is often used to (among other
+       things) condense css and javascript into fewer files
+       so that the client application sends fewer request to the server
+       while maintaining modularity in the files that developers edit -->
+
+
+  <body>
+    <h1>Movie Fave</h1>
+    <nav>
+      <ul>
+        <li class="search">
+          <a>search</a>
+        </li>
+        <li class="faves">
+          <a>faves</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="content">
+
+      <section id="loading">
+        <div class="row">
+          <div class="twelve columns">
+            <div class="spin-rotating-plane"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="search"
+               hidden="true">
+        <div class="row">
+          <div class="two columns">
+            <!-- this is a Non (line) Breaking SPace.
+                 it's useful for creating empty "boxes"
+                 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model
+              -->
+            &nbsp
+          </div>
+          <div class="eight columns">
+            <div class="row">
+              <div class="one column">&nbsp</div>
+              <div class="ten columns">
+                <!-- this action attribute prevents the form from being
+                     submitted.  using a <form> rather than a <div> is
+                     an example of semantic html. -->
+                <form action="javascript:void(0);">
+                  <input type="text"
+                         placeholder="movie title..."></input>
+                  <button>Search</button>
+                </form>
+              </div>
+              <div class="one column">&nbsp</div>
+            </div>
+            <div class="results" hidden="true">
+              <h3>Results for <span class="query"></span></h3>
+              <span class="no-results">No results found</span>
+              <ul></ul>
+            </div>
+          </div>
+          <div class="two columns">&nbsp</div>
+        </div>
+      </section>
+
+      <section id="faves"
+               hidden="true">
+        <div class="row">
+          <div class="two columns">&nbsp</div>
+          <div class="eight columns">
+            <h3>Faves</h3>
+            <div class="no-faves">
+              No faves added (<span>yet!</span>)
+            </div>
+            <ul></ul>
+          </div>
+          <div class="two columns">&nbsp</div>
+        </div>
+      </section>
+
+    </div>
+    <!-- placing script tags toward the end of an html file is
+         a way to ensure that the html document has loaded into the
+         browser's memory before the script attempts to start making
+         changes to it (the html Document Object Model).
+
+         there are other methods to achieve this effect
+         http://stackoverflow.com/questions/2304941/what-is-the-non-jquery-equivalent-of-document-ready
+         as usual, the "right" answer depends on one's use case, and
+         Your Milage May Vary (ymmv). -->
+    <script src="js/main.js"></script>
+  </body>
+
+</html>

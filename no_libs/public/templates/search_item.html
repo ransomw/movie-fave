@@ -1,0 +1,66 @@
+<li>
+  <div class="summary">
+    <div class="row">
+      <div class="ten columns">
+        <a>{{title}}</a>
+        <span>({{year}})</span>
+      </div>
+      <div class="two columns button-div">
+        <!-- on data-_="" attributes:
+             most web browsers consist of two main components:
+             a javascript engine for running programs and a rendering
+             engine for displaying data.  there is a javascript
+             library (code meant to be used in lots of different
+             applications) called backbone http://backbonejs.org
+             that was released in 2010, and afterward most people
+             started structuring their web applications in way that,
+             whereever possible (that is, except in the case of
+             collecting data from the users of the application or
+             similar situations), application data flowed only from the
+             javascript engine to the rendering engine, not in the
+             reverse direction.
+
+             backbone and similar libraries (angular, ember, react,
+             and who-knows-what-next) are considered improvements
+             because they usually make moderately complex web apps
+             both easier to maintain and "more performant" (less
+             janky).  however, "storing application state in the DOM"
+             still occurs in many code bases and can be useful in
+             appropriate situations, so i've included an example here.
+
+             note that when application state is stored in the
+             Document Object Model, it's best practice to put it
+             in the attribute of a tag with a standard naming
+             convention such as data-* or in the body of a tag
+             that's not part of the application's UI.
+          -->
+        <button
+           data-title="{{title}}"
+           data-oid="{{oid}}"
+           hidden="{{is_fave}}">
+          +fave
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="details"
+       hidden="true">
+    <div class="row">
+      <div class="six columns">
+        <!-- adding the alt attribute to images improves
+             accessibility for vison-impaired users and
+             people who use text-based browsers like
+             lynx http://lynx.invisible-island.net/
+             (yes, such things actually exist!) -->
+        <img src="{{url_img_poster}}"
+             alt="{{title}} poster"></img>
+      </div>
+      <div class="six columns">
+        <h5>Summary</h5>
+        <p>
+          {{plot_summary}}
+        </p>
+      </div>
+    </div>
+  </div>
+</li>

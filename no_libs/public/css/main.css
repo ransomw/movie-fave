@@ -1,0 +1,306 @@
+/* page-specific css
+ *
+ * note that selector specificity generally flows from top to bottom,
+ * which i find easier to read and edit
+ */
+
+/* uncommenting the following selector allows viewing the css
+ * box model at once, sometimes avoiding a lot of clicks in the
+ * browsers developer tools
+ */
+/*
+* {
+  outline: 1px solid red !important;
+}
+*/
+
+/* more additional css for semantic html: although anchor tags
+ * aren't used as links (b/c routing isn't implemented), they
+ * should still be styled as such
+ */
+a:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+  font-family: '3Dumb';
+  font-size: 7em;
+}
+
+img {
+  max-width: 100%;
+}
+
+nav {
+  font-family: 'Journal';
+  font-size: 4em;
+}
+
+/* workaround for the CSS3 font-stretch property being unimplemented
+ * in chrome
+ */
+nav li {
+  transform:scale(1.5,1);
+  -webkit-transform:scale(1.5,1);
+  display:inline-block;
+}
+
+.content {
+  font-family: 'Aaargh';
+  margin-top: 1em
+}
+
+.content p {
+  font-size: 1.06em;
+}
+
+/*-------------
+ * search form
+ *-------------
+ */
+
+/* idea: some of these properties probably ought to be moved or
+ *       "refactored" elsewhere.
+ *
+ * since this entire site only has one form, it's ok to put all
+ * selectors pertaining to that form here for now, but  suppose
+ * that you were building many sites and wanted to reuse some of your
+ * css across all of them.  this is the Don't Repeat Yourself notion,
+ * and it can be a delicate balance.
+ */
+
+form {
+  display: flex;
+  align-items: stretch;
+  font-size: 1.5em;
+  border-radius: 1em;
+  overflow: hidden;
+  border: 1px solid black;
+}
+
+form input {
+  margin: 0;
+  font-size: inherit;
+  align-self: stretch;
+  flex-grow: 1;
+  font: inherit;
+  color: inherit;
+  border: none;
+  padding-left: 1em; /* match form's border-radius */
+}
+
+form button {
+  margin: 0;
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
+  border-left: 1px solid black;
+}
+
+/*------------------------------
+ * search
+ *------------------------------
+ */
+
+#search h3 {
+  font-size: 1.5em;
+}
+
+#search form button {
+  /* these are Red Green Blue color codes, they are of the form #rgb,
+   * where each of r, g, and b is a "digit"
+   * 0 < 1 < 2 < ... < 9 < A < B < ... < F
+   * so A is like 10, B like 11, and so on.  it's often convenient
+   * to write numbers using this "hexidecimal" (base-16) notation
+   * or a similar "octal" (base-8) notation, because 16 and 8 are
+   * powers of 2, [most] computers encode numbers with a sequence
+   * of on or off "binary" states, and given N places to hold a binary
+   * state, there are 2^N possible states that the entire of collection
+   * of places could be in.
+   */
+  background-color: #77F;
+}
+
+#search form button:hover {
+  background-color: #99F;
+}
+
+#search .results > h3 {
+  margin-left: 1em;
+  margin-top: .5em;
+  margin-bottom: 1em;
+  font-weight: normal;
+}
+
+#search .results .query {
+  font-style: italic;
+}
+
+#search .results button {
+  /* color may also be specified by a few pre-defined names */
+  background-color: red;
+  border: 2px solid black;
+  /* rounded corners */
+  border-radius: 1em;
+  /* for correct show/hide behavior according to hidden attribute */
+  display: inline;
+}
+
+/* todo: look into the current specs for this and sort out
+ *       what about the behavior i expect is and isn't the result
+ *       of 3rd-party css
+ */
+#search .results button[hidden="true"] {
+  display: none;
+}
+
+#search .results button:hover {
+  background-color: darkred;
+}
+
+#search .results ul {
+  list-style: none;
+}
+
+#search .results ul li {
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid #AAA;
+}
+
+#search .results ul li .summary {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+/* sometimes the lines between semantic HTML used to describe the
+ * structure of a page and stylesheets used to impart a look and feel
+ * to the page are a little blurry, as the next two selectors demo.
+ */
+
+/* this selector contains some information about page structure,
+ * pushing semantic information slighly into the stylesheet
+ */
+#search .results ul li .summary > div > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ... and here's a selector that uses a special class to keep track
+ * of the element we'd like to style, resulting in (more) styling
+ * information in the html markup.
+ */
+#search .results ul li .summary .button-div {
+  text-align: right;
+}
+
+#search .results ul li .details {
+  padding-top: .5em;
+  margin-top: .5em;
+  border-top: 1px solid #999;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+#search .results ul li .details > div > div:first-child {
+  /* vertical and hoizontal center the image */
+  margin: auto;
+  text-align: center;
+}
+
+#search .results ul li .details h5 {
+  margin-top: 0;
+  margin-bottom: .3em;
+  font-weight: bold;
+  font-size: 1.75em;
+}
+
+#search .results ul li .details p {
+  /* although this margin is barely perceptible,
+   * it may enhance readability as the eye is not quite
+   * drawn back to the same indentation as the header.
+   * small details like these (of which there are not nearly enough
+   * in this project) make a huge difference in the
+   * "UX" (user experience) of websites.
+   */
+  margin-left: .25em;
+}
+
+
+/*------------------------------
+ * faves
+ *------------------------------
+ */
+
+
+#faves h3 {
+  font-size: 2.2em;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 2em;
+  margin-right: 2em;
+  padding-left: 1em;
+  border-bottom: .11em solid #778;
+  font-weight: normal;
+}
+
+
+#faves .no-faves {
+  width: 100%;
+  text-align: center;
+  font-size: 1.4em;
+  margin-top: 2em;
+}
+
+#faves .no-faves span {
+  font-style: italic;
+}
+
+#faves ul {
+  list-style: none;
+  margin-top: 2em;
+}
+
+#faves ul li {
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid #AAA;
+}
+
+#faves ul li .summary {
+  font-size: 1.4em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#faves ul li .details {
+  padding-top: .5em;
+  margin-top: .5em;
+  border-top: 1px solid #999;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+#faves ul li .details > div > div:first-child {
+  margin: auto;
+  text-align: center;
+}
+
+#faves ul li .details h5 {
+  margin-top: 0;
+  margin-bottom: .3em;
+  font-weight: bold;
+  font-size: 1.75em;
+}
+
+#faves ul li .details p {
+  margin-left: .25em;
+}
+

@@ -1,0 +1,51 @@
+/* css can do a lot more than one might expect!
+ * the spin-rotating-plane class makes a neato animation effect
+ * so people know that the browser application is doing something
+ * while it's, for instance, loading data.
+ *
+ * this was pretty much directly lifted from
+ * spinkit http://tobiasahlin.com/spinkit/
+ *
+ * idea: make custom spinners.  maybe a spiral shape?
+ *       consider using less (http://lesscss.org) for variables
+ *       and other language features not included in plain css.
+ */
+
+.spin-rotating-plane {
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  margin: 40px auto;
+  -webkit-animation: spin-rotatePlane 1.2s infinite ease-in-out;
+  animation: spin-rotatePlane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes spin-rotatePlane {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+@keyframes spin-rotatePlane {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}

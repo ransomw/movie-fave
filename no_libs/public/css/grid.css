@@ -1,0 +1,78 @@
+/* css grids are a convenient way to structure content on a page.
+ * although one often reuses an existing grid system in practice,
+ * it's helpful to see that there's nothing complicated going
+ * on behind the scenes.
+ *
+ * each horizontal row consists of twelve vertical columns, a common and
+ * not entirely arbitrary choice for reasons similar to those that
+ * motivate keeping 12 * 5 === 60 seconds per minute.
+ *
+ * the idea for naming column html elements with classes
+ * such as "one column" rather than "col-1" is lifted from
+ * skeleton.css http://getskeleton.com
+ *
+ * idea: make the grid-system mobile-friendly by using media queries
+ */
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.column,
+.columns {
+  width: 100%;
+  float: left;
+  box-sizing: border-box;
+}
+
+.one.column,
+.one.columns {
+    width: 8.33%;
+}
+
+.two.columns {
+    width: 16.66%;
+}
+
+.three.columns {
+    width: 25%;
+}
+
+.four.columns {
+    width: 33.33%;
+}
+
+.five.columns {
+    width: 41.67%;
+}
+
+.six.columns {
+    width: 50%;
+}
+
+.seven.columns {
+    width: 58.33%;
+}
+
+.eight.columns {
+    width: 66.67%;
+}
+
+.nine.columns {
+    width: 75%;
+}
+
+.ten.columns {
+    width: 83.33%;
+}
+
+.eleven.columns {
+    width: 91.67%;
+}
+
+.tweleve.columns {
+    width: 100%;
+}

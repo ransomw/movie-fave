@@ -1,0 +1,32 @@
+/* navigation styles
+ *
+ * idea: make navigation bar "stick" to the top of the window,
+ *       even after the title is scrolled out of view.
+ *       although this will likely require some javascript as well,
+ *       consider the case of working with a colleague who
+ *       writes html and css and wants as much customization
+ *       of the look and feel as possible from the domain-specific
+ *       languages
+ */
+
+nav > ul {
+  width: 40%;
+  /* this margin setting centers the list inside the <nav> element  */
+  margin: auto;
+  /* although navigation items are _conceptually_ an unordered list,
+   * i want to display them horizontally rather than vertically.
+   *
+   * this is an example of what's meant by "semantic html"
+   * http://en.wikipedia.org/wiki/Semantic_HTML
+   */
+  list-style: none;
+  /* the remaining properties in this selector are specific to the
+   * flex display style.  for documentation, see
+   * http://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes
+   * and
+   * http://css-tricks.com/snippets/css/a-guide-to-flexbox/
+   */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

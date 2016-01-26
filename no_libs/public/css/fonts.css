@@ -1,0 +1,36 @@
+/* custom font definitions allow browsers to use fonts that might not
+ * be installed on the local computer.  there are a lot of fonts out
+ * there! the ones used in the project may be found at
+ * http://fontsquirrel.com/
+ */
+
+@font-face {
+  font-family: 'Amatic';
+  font-style: normal;
+  font-weight: 400;
+  /* if font is on local filesystem, use that.  otherwise,
+   * download from server
+   */
+  src: local('Amatic'), url(/fonts/AmaticSC-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Journal';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Journal'), url(/fonts/journal.ttf);
+}
+
+@font-face {
+  font-family: '3Dumb';
+  font-style: normal;
+  font-weight: 400;
+  src: local('3Dumb'), url(/fonts/3Dumb.ttf);
+}
+
+@font-face {
+  font-family: 'Aaargh';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Aaargh'), url(/fonts/Aaargh.ttf);
+}
