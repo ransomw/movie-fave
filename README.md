@@ -10,7 +10,7 @@ Yet Another Reference App that seeks to explore the role of 3rd-party libraries 
 * `./make_doc.sh`
 * `PORT=<port-number> node bin/run`
 
-Developed on node v5.3.0, npm 3.3.2, and Chromium 47.
+Developed on node v5.5.0, npm 3.3.2, and Chromium 47.
 
 ##### browser support
 

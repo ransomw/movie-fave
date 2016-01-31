@@ -1,0 +1,10 @@
+// -*-js2-*-
+
+var run_func_tests = require('../test/func');
+
+run_func_tests().then(
+  function () {
+    console.log("finished tests");
+  }, function () {
+    console.log("test err");
+  });
