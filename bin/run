@@ -1,9 +1,88 @@
 // -*-js2-*-
+/*global require, process, __dirname */
 
-var app = require('../no_libs/server');
+// todo: opts/defaults and build/run into seperate scripts
 
-var PORT = process.env.PORT || 3000;
+const path = require('path');
+const fs = require('fs');
 
-app.listen(PORT, function(){
-  console.log("Listening on port " + PORT);
+const express = require('express');
+const deepFreeze = require('deep-freeze');
+const _ = require('lodash');
+const Q = require('q');
+
+const make_app = require('../no_libs/server');
+const client_marionette = require('../marionette');
+
+const DIR_REPO = path.join(__dirname, '..');
+const DIR_NO_LIBS_CLIENT = path.join(DIR_REPO, 'no_libs', 'public');
+const DIR_MARIONETTE_CLIENT = path.join(DIR_REPO, 'build', 'marionette');
+const PORT = process.env.PORT || 3000;
+const CLIENT_TYPES = deepFreeze({
+	no_libs: "no-libs",
+	marionette: "marionette"
 });
+
+var app = make_app();
+
+// the main advantages of this lib
+// http://yargs.js.org/
+// are 1) pirate pictures, 2) documentation that sounds like it was
+// written by pirates
+const argv = require('yargs')
+				.options({
+					'c': {
+						desc: "continuous build",
+						type: 'boolean',
+						default: false
+					},
+					'f': {
+						desc: "frontend client",
+						type: 'string',
+						choices: _.values(CLIENT_TYPES),
+						default: CLIENT_TYPES.no_libs
+					},
+					'p': {
+						desc: "data file path",
+						type: 'string',
+						default: app.locals.path_data_file
+					}
+				}).argv;
+
+var data_file_exists;
+if (argv.f === CLIENT_TYPES.no_libs) {
+	app = make_app();
+} else if (argv.f === CLIENT_TYPES.marionette) {
+	app = make_app({dir_client: DIR_MARIONETTE_CLIENT});
+}
+app.locals.path_data_file = argv.p;
+
+try {
+	fs.accessSync(app.locals.path_data_file, fs.F_OK);
+	data_file_exists = true;
+} catch (err) {
+	data_file_exists = false;
+}
+
+if (!data_file_exists) {
+	fs.writeFileSync(app.locals.path_data_file, '[]');
+}
+
+if (argv.f === CLIENT_TYPES.no_libs) {
+	app.listen(PORT, function(){
+		console.log("Listening on port " + PORT);
+	});
+} else if (argv.f === CLIENT_TYPES.marionette) {
+	Q().then(function () {
+		// default static url duplicated from server.js defaults
+		return client_marionette.build_client(
+			DIR_MARIONETTE_CLIENT, '/', {cts: argv.c});
+	}).then(function () {
+		app.listen(PORT, function(){
+			console.log("Listening on port " + PORT);
+		});
+	}).catch(function (err) {
+    console.log("run failed");
+    console.log(err);
+  });
+}

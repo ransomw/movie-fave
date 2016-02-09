@@ -20,7 +20,7 @@ const _ = require('lodash');
 const jsdom = require('jsdom');
 const cheerio = require('cheerio');
 
-const app = require('../../no_libs/server');
+const make_app = require('../../no_libs/server');
 
 // path to chromedriver executable
 const CD_PATH = require('chromedriver').path;
@@ -45,6 +45,8 @@ var client = webdriverio.remote({
 // returned by `tmp` module
 // https://github.com/raszi/node-tmp
 var data_file;
+// application instance
+var app = make_app();
 // application http server instance
 // https://nodejs.org/api/http.html#http_class_http_server
 var app_server;
@@ -290,6 +292,7 @@ const test_fave = function (t) {
   t.test("setup", func_test_setup);
   t.test("test", _test_fave);
   t.test("teardown", func_test_teardown);
+	t.end();
 };
 
 
@@ -385,6 +388,7 @@ const test_search = function (t) {
   t.test("setup", func_test_setup);
   t.test("test", _test_search);
   t.test("teardown", func_test_teardown);
+	t.end();
 };
 
 
@@ -404,6 +408,7 @@ const test_home = function (t) {
   t.test("setup", func_test_setup);
   t.test("test", _test_home);
   t.test("teardown", func_test_teardown);
+	t.end();
 };
 
 const func_tests_setup = function (t) {

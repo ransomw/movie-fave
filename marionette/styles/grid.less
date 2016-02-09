@@ -1,0 +1,69 @@
+/* todo: make mobile-friendly/responsive w/ media queries */
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.column,
+.columns {
+  width: 100%;
+  float: left;
+  box-sizing: border-box;
+}
+
+/* todo: rounding still doesn't exactly duplicate grid.css in no_libs */
+/* use two variables to prevent rounding errors */
+@width-one-column: 8.33%;
+@width-three-columns: 25%;
+
+.one.column,
+.one.columns {
+  width: @width-one-column;
+}
+
+.two.columns {
+  width: @width-one-column * 2;
+}
+
+.three.columns {
+  width: @width-three-columns;
+}
+
+.four.columns {
+  width: @width-one-column * 4;
+}
+
+.five.columns {
+  width: @width-one-column * 5;
+}
+
+.six.columns {
+  width: @width-three-columns * 2;
+}
+
+.seven.columns {
+  width: @width-one-column * 7;
+}
+
+.eight.columns {
+  width: @width-one-column * 8;
+}
+
+.nine.columns {
+  width: @width-three-columns * 3;
+}
+
+.ten.columns {
+  width: @width-one-column * 10;
+}
+
+.eleven.columns {
+  width: @width-one-column * 11;
+}
+
+.tweleve.columns {
+  width: @width-three-columns * 4;
+}

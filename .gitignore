@@ -3,3 +3,4 @@ node_modules/
 doc/main.html
 doc/docco.css
 doc/public/
+build/marionette/
