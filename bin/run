@@ -14,14 +14,13 @@ const Q = require('q');
 const make_app = require('../no_libs/server');
 const client_marionette = require('../marionette');
 
-const DIR_REPO = path.join(__dirname, '..');
-const DIR_NO_LIBS_CLIENT = path.join(DIR_REPO, 'no_libs', 'public');
-const DIR_MARIONETTE_CLIENT = path.join(DIR_REPO, 'build', 'marionette');
+const G_CONST = require('../index').CONST;
+
+const DIR_NO_LIBS_CLIENT = G_CONST.DIR_NO_LIBS_CLIENT;
+const DIR_MARIONETTE_CLIENT = G_CONST.DIR_MARIONETTE_CLIENT;
+const CLIENT_TYPES = G_CONST.CLIENT_TYPES;
+
 const PORT = process.env.PORT || 3000;
-const CLIENT_TYPES = deepFreeze({
-	no_libs: "no-libs",
-	marionette: "marionette"
-});
 
 var app = make_app();
 

@@ -1,8 +1,27 @@
 // -*-js2-*-
 
+/*global require */
+
+const _ = require('lodash');
+
 var run_func_tests = require('../test/func');
 
-run_func_tests().then(
+const G_CONST = require('../index').CONST;
+
+const CLIENT_TYPES = G_CONST.CLIENT_TYPES;
+
+const argv = require('yargs')
+				.options({
+					'f': {
+						desc: "frontend client",
+						type: 'string',
+						choices: _.values(CLIENT_TYPES),
+						default: CLIENT_TYPES.no_libs
+					}
+				}).argv;
+
+
+run_func_tests(argv.f).then(
   function () {
     console.log("finished tests");
   }, function () {
